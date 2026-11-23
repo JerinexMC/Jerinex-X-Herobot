@@ -25,7 +25,7 @@ public final class JerinexXHerobot implements ModInitializer {
 
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) ->
             dispatcher.register(Commands.literal("jx")
-                .requires(source -> source.hasPermission(2))
+                .requires(source -> source.getPermissionLevel() >= 2)
                 .then(Commands.literal("status")
                     .executes(context -> status(context.getSource())))
                 .then(Commands.literal("use")
@@ -78,12 +78,11 @@ public final class JerinexXHerobot implements ModInitializer {
 
         String command = "player " + botName + " " + action;
         try {
-            int result = server.getCommands().performPrefixedCommand(
-                server.createCommandSourceStack(),
-                command
-            );
-            source.sendSuccess(() -> Component.literal("[JX] Sent: /" + command), false);
-            return result;
+            server.getCommands().performPrefixedCommand(
+    server.createCommandSourceStack(),
+    command
+);
+return 1;
         } catch (RuntimeException exception) {
             LOGGER.error("Failed to dispatch HeroBot command: {}", command, exception);
             source.sendFailure(Component.literal("[JX] Could not dispatch HeroBot command. Check the server log."));
