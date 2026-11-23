@@ -6,7 +6,7 @@
   "description": "Server-side HeroBot automation and behavior customization for Minecraft 1.21.11.",
   "authors": ["JerinexMC"],
   "license": "All-Rights-Reserved",
-  "environment": "server",
+  "environment": "*"
   "entrypoints": {
     "main": [
       "com.jerinex.herobot.JerinexXHerobot"
